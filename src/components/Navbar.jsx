@@ -1,36 +1,36 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div>
-        <header className="pb-6 bg-gradient-to-r from-zinc-900 to-purple-900 lg:pb-0" x-data="{expanded: false}">
-  <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-  
-    <nav className="flex items-center justify-between h-16 lg:h-20">
-      <div className="flex-shrink-0">
-        <a href="#" title="" className="flex">
-          <img className="w-auto h-10 lg:h-12 " src="src\assets\download.jpeg"  alt="LOGO" />
-        </a>
+    <nav className="bg-gray-900 text-white p-4">
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <h1 className="text-2xl font-bold text-blue-500">Video Chat</h1>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {/* Navigation Links */}
+        <div className={`md:flex space-x-6 ${isOpen ? "block" : "hidden"} absolute md:relative top-16 md:top-0 left-0 w-full md:w-auto bg-gray-900 md:bg-transparent p-4 md:p-0`}>
+          <Link to="/" className="block md:inline-block py-2 md:py-0 hover:text-blue-400">Home</Link>
+          <Link to="/about" className="block md:inline-block py-2 md:py-0 hover:text-blue-400">About</Link>
+          <Link to="/join-meeting" className="block md:inline-block py-2 md:py-0 hover:text-blue-400">Join Meeting</Link>
+          <Link to="/create-meeting" className="block md:inline-block py-2 md:py-0 hover:text-blue-400">Create Meeting</Link>
+          <Link to="/sign-in" className="block md:inline-block py-2 md:py-0 hover:text-blue-400">Sign In</Link>
+          <Link to="/sign-up" className="block md:inline-block py-2 md:py-0 hover:text-blue-400">Sign Up</Link>
+        </div>
       </div>
-
-     
-      <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
-        <a href="#" title="" className="text-base font-medium text-gray-50 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
-
-        <a href="#" title="" className="text-base font-medium text-gray-50 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Solutions </a>
-
-        <a href="#" title="" className="text-base font-medium text-gray-50 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Resources </a>
-
-        <a href="#" title="" className="text-base font-medium text-gray-50 transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Pricing </a>
-      </div>
-
-      <a href="#" title="" className="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md lg:inline-flex hover:bg-blue-700 focus:bg-blue-700"  role="button"> Get started </a>
     </nav>
+  );
+};
 
-   
-  </div>
-</header></div>
-  )
-}
-
-export default Navbar
+export default Navbar;
