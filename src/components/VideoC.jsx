@@ -11,8 +11,8 @@ function VideoC() {
             if (!roomID || !containerRef.current) return;
 
             // Ensure appID is a number
-            const appID = Number(import.meta.env.VITE_ZEGO_APP_ID);
-            const serverSecret = import.meta.env.VITE_ZEGO_SERVER_SECRET;
+            const appID = 1482011012;
+            const serverSecret = "3394381a3f47aadba6678437f5276f6c";
 
             console.log("appID:", appID, typeof appID);
             console.log("serverSecret:", serverSecret);
